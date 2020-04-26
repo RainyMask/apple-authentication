@@ -1,5 +1,5 @@
 #import <React/RCTComponent.h>
-@import AuthenticationServices;
+#import <AuthenticationServices/AuthenticationServices.h>
 
 @interface RNCSignInWithAppleButton : ASAuthorizationAppleIDButton
 

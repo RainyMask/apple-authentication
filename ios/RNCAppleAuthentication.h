@@ -1,9 +1,6 @@
 
 #import <React/RCTBridgeModule.h>
-//#import "RCTBridgeModule.h"
-//#import <React/RCTBridge.h>
-
-@import AuthenticationServices;
+#import <AuthenticationServices/AuthenticationServices.h>
 
 @interface RNCAppleAuthentication : NSObject <RCTBridgeModule, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding>
 
