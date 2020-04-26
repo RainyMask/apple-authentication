@@ -2,10 +2,33 @@
 
 ---
 
-**:warning: THIS REPO IS ARCHIVED, IT IS NOT FUNCTIONAL OR UNDER DEVELOPMENT :warning:**
+### 1、add the lines into package.json file
 
-If you're looking for Apple Sign In for React Native, check out the [expo-apple-authentication](https://github.com/expo/expo/blob/master/packages/expo-apple-authentication). This works in both vanilla React Native and managed Expo projects ([as do other Expo SDK APIs](https://blog.expo.io/you-can-now-use-expo-apis-in-any-react-native-app-7c3a93041331)).
+`"apple-authentication": "github:RainyMask/apple-authentication",`
 
----
+### 2、run "npm install"
 
-Please note that since this package was never released, the repository may be renamed or deleted in the future.
+### 3、run "cd ios && pod install"
+
+### 4、use this in code, exampale:
+
+`import {
+    SignInWithApple,
+    SignInWithAppleButton,
+} from 'apple-authentication';`
+
+
+`<SignInWithAppleButton style={{ height: 44, width: 200 }} onPress={this.signIn} />`
+
+
+
+	signIn = async () => {
+       try {
+            const result = await SignInWithApple.requestAsync({
+                scopes: [SignInWithApple.Scope.FULL_NAME, SignInWithApple.Scope.EMAIL],
+            });
+            console.warn(result);
+        } catch (err) {
+            console.error(err);
+        }
+	};
