@@ -64,9 +64,9 @@ RCT_EXPORT_METHOD(requestAsync:(NSDictionary *)options
         // 创建新的AppleID 授权请求
         ASAuthorizationAppleIDRequest *appleIDRequest = [appleIDProvider createRequest];
         // 在用户授权期间请求的联系信息
-        appleIDRequest.requestedScopes = options[@"requestedScopes"];
+        appleIDRequest.requestedScopes = options[@"scopes"];
         //
-        if (options[@"requestedOperation"]) {
+        if (options[@"operation"]) {
           appleIDRequest.requestedOperation = options[@"requestedOperation"];
         }
         // 由ASAuthorizationAppleIDProvider创建的授权请求 管理授权请求的控制器
