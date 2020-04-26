@@ -6,6 +6,15 @@
 
 RCT_EXPORT_MODULE()
 
+- (dispatch_queue_t)methodQueue
+{
+  return dispatch_get_main_queue();
+}
+
++ (BOOL)requiresMainQueueSetup
+{
+  return NO;
+}
 
 - (NSDictionary *)constantsToExport
 {
@@ -134,7 +143,7 @@ RCT_EXPORT_METHOD(requestAsync:(NSDictionary *)options
     }
     NSLog(@"%@", errorMsg);
     if (_promiseReject) {
-        _promiseReject(@"RNCAppleSignIn", error.description, error);
+        _promiseReject([NSString stringWithFormat:@"%ld", (long)error.code], errorMsg, error);
     }
 }
 

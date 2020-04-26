@@ -12,23 +12,19 @@
 
 ### 4、use this in code, exampale:
 
-`import {
-    SignInWithApple,
-    SignInWithAppleButton,
-} from 'apple-authentication';`
+
+    import { SignInWithApple, SignInWithAppleButton } from 'apple-authentication';
 
 
-`<SignInWithAppleButton style={{ height: 44, width: 200 }} onPress={this.signIn} />`
+    <SignInWithAppleButton style={{ height: 44, width: 200 }} onPress={this.signIn} />
 
 
-
-	signIn = async () => {
-       try {
-            const result = await SignInWithApple.requestAsync({
-                scopes: [SignInWithApple.Scope.FULL_NAME, SignInWithApple.Scope.EMAIL],
-            });
-            console.warn(result);
-        } catch (err) {
-            console.error(err);
-        }
-	};
+    signIn = async () => {
+        await SignInWithApple.requestAsync({
+            scopes: [SignInWithApple.Scope.FULL_NAME, SignInWithApple.Scope.EMAIL]
+        }).then(result => {
+            console.log(result)
+        }).catch(err => {
+            console.log(err.code + ': ' + err.message)
+        });
+    };
